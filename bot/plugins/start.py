@@ -3,7 +3,7 @@ from telegram.ext import CallbackContext
 
 
 def start_handler(update:Update,context:CallbackContext):
-    with open("images/photo1.jpg", "rb") as photo:
+    with open("assets/images/photo1.jpg", "rb") as photo:
         update.message.reply_photo(
         caption="""🏠 MAIN MENU
 
