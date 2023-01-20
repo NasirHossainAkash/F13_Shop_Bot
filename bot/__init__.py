@@ -13,7 +13,7 @@ from telegram.ext import Defaults,Updater
 
 TOKEN = os.getenv("TOKEN")
 if not TOKEN:
-    raise("Token Not found on environment var")
+    raise Exception("Token Not found on environment var")
 defaults = Defaults(parse_mode=ParseMode.HTML,run_async=True)
 updater = Updater(token=TOKEN,defaults=defaults)
 dispatcher = updater.dispatcher
