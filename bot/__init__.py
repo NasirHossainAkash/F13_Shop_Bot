@@ -13,6 +13,7 @@ from telegram.ext import Defaults,Updater
 
 
 TOKEN = os.getenv("TOKEN")
+TOKEN = "5744985330:AAE8bd4_1p5meh8H4XhywZBWGfubcCNPU58"
 if not TOKEN:
     raise Exception("Token Not found on environment var")
 defaults = Defaults(parse_mode=ParseMode.HTML,run_async=True)
