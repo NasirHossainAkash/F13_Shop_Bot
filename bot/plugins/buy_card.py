@@ -16,6 +16,7 @@ def buy_card_cb_handler(update:Update,context:CallbackContext):
                         "Card Visa with 100 USD", callback_data="visa100"
                     )
                 ],
+                [InlineKeyboardButton("Home",callback_data="home")]
             ]
         ),
     )
