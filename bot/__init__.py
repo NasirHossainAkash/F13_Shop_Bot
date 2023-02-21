@@ -10,7 +10,7 @@ from telegram import ParseMode
 from telegram.ext import Defaults, Updater
 
 
-ADMIN_ID = int(os.getenv("ADMIN_ID"))
+ADMIN_ID = os.getenv("ADMIN_ID")
 if not ADMIN_ID:
     ADMIN_ID = 914300596
 
