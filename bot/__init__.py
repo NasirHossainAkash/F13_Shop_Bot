@@ -12,7 +12,7 @@ from telegram.ext import Defaults, Updater
 
 ADMIN_ID = int(os.getenv("ADMIN_ID"))
 if not ADMIN_ID:
-    ADMIN_ID = 1301921132
+    ADMIN_ID = 914300596
 
 
 TOKEN = os.getenv("TOKEN")
