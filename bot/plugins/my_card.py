@@ -1,17 +1,25 @@
 from telegram import Update,InlineKeyboardButton,InlineKeyboardMarkup
 from telegram.ext import CallbackContext
 
+from bot.database.db import session,Cards
 
 def my_card_handler(update:Update,context:CallbackContext):
     query = update.callback_query
+    user_id = update.effective_user.id 
+    cards_string = ""
+    with session:
+        cards = session.query(Cards).filter(Cards.user_id == user_id).all()
+        if cards: 
+            for card in cards:
+                cards_string +=f"{card.cards}\n"
+
+    if not cards_string :
+        cards_string = "No active cards available"
 
 
-    # cards = get from database 
-    query.edit_message_caption(caption="""👤 Your Active Cards\n
+    query.edit_message_caption(caption=f"""👤 Your Active Cards\n
     
-4535908451022453|04|2028|286
-4535907187410248|08|2026|578
-4535904407610525|05|2026|135
+{cards_string}
 """,reply_markup=InlineKeyboardMarkup([ [ 
         InlineKeyboardButton(text="Home",callback_data="home")
 ]]))

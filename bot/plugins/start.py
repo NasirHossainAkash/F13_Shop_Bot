@@ -4,16 +4,14 @@ from telegram.ext import CallbackContext
 
 from bot.database.db import session,BotUser
 
-def convert_to_byte(list_obj):
-    return pickle.dumps(list_obj)
+
 
 
 def start_handler(update:Update,context:CallbackContext):
     with session:
         bot_user = session.query(BotUser).filter(BotUser.user_id==update.effective_user.id).first()
         if not bot_user:
-            session.add(BotUser(user_id=update.effective_user.id,balance=0,cards=convert_to_byte([])))
-            print("added")
+            session.add(BotUser(user_id=update.effective_user.id,balance=0,first_name=update.effective_user.first_name))
             session.commit()
 
     with open("assets/images/photo1.jpg", "rb") as photo:

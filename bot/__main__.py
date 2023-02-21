@@ -17,6 +17,9 @@ from bot.plugins.balance import balance_handler
 from bot.plugins.referral import referral_handler
 from bot.plugins.my_card import my_card_handler
 
+from bot.plugins.add_balance import add_balance_handler
+from bot.plugins.add_card import add_card_handler
+from bot.plugins.purchase_handler import purchase_callback_handler
 
 def main():
     dispatcher.add_handler(CommandHandler("start",start_handler))
@@ -26,6 +29,9 @@ def main():
     dispatcher.add_handler(CallbackQueryHandler(callback=start_callback_handler,pattern='home'))
     dispatcher.add_handler(CallbackQueryHandler(callback=referral_handler,pattern='referral'))
     dispatcher.add_handler(CallbackQueryHandler(callback=my_card_handler,pattern='my_cards'))
+    dispatcher.add_handler(CallbackQueryHandler(callback=purchase_callback_handler,pattern="purchase"))
+    dispatcher.add_handler(CommandHandler("add",add_balance_handler))
+    dispatcher.add_handler(CommandHandler("card",add_card_handler))
     updater.start_polling()
     updater.idle()
 
